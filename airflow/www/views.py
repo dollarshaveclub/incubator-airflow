@@ -1759,7 +1759,7 @@ class Airflow(BaseView):
             flash("Missing file or syntax error.")
         else:
             for k, v in d.items():
-                models.Variable.set(k, v, serialize_json=isinstance(v, dict))
+                models.Variable.set(k, v, serialize_json=isinstance(v, (dict, list)))
             flash("{} variable(s) successfully updated.".format(len(d)))
         return redirect('/admin/variable')
 
